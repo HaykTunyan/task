@@ -1,8 +1,8 @@
 import React from "react";
 import { useSelector } from "react-redux";
-import { Space, Table, List, Typography, Divider, Row, Col, Card } from "antd";
+import { Button, Divider, Row, Col, Card } from "antd";
 
-const TableStepThree = () => {
+const TableStepThree = ({ navigation }) => {
   const stateData = useSelector((state) => state.global.form);
   const stateDataTwo = useSelector((dataTwo) => dataTwo.global.formTwo);
   
@@ -55,7 +55,9 @@ const TableStepThree = () => {
         </div>
         <Divider></Divider>
           <div className="flex-around">
-
+            <Button type="default" onClick={() => navigation.next()}>
+              Next
+            </Button>
           </div>
         </Card>
       </Col>
