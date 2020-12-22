@@ -1,302 +1,77 @@
 import React from "react";
-import { Table } from 'antd';
-import { usersData } from '../../tableData/table';
+import { Table } from "antd";
+import { usersData } from "../../tableData/table";
 
-// const columns = [
-//     {
-//       title: 'Name',
-//       dataIndex: 'name',
-//     },
-//     {
-//       title: 'Chinese Score',
-//       dataIndex: 'chinese',
-//       sorter: {
-//         compare: (a, b) => a.chinese - b.chinese,
-//         multiple: 3,
-//       },
-//     },
-//   ];
+const TableData = (pagination, filters, sorter, extra ) => {
 
+  const columns = [
+    {
+      title: "First Name",
+      dataIndex: "first_name",
+      key: "name",
+      sorter: (a, b) => a.first_name.localeCompare(b.first_name),
+      sortDirections: ["descend", "ascend"],
+      defaultSortOrder: "ascend",
+    },
+    {
+      title: "Last Name",
+      dataIndex: "last_name",
+      key: "last_name",
+      sorter: (a, b) => a.last_name.localeCompare(b.last_name),
+      sortDirections: ["descend", "ascend"],
+      defaultSortOrder: "ascend",
+    },
+    {
+      title: "Email",
+      dataIndex: "email",
+      key: "email",
+      sorter: (a, b) => a.email.localeCompare(b.email),
+      sortDirections: ["descend", "ascend"],
+      defaultSortOrder: "ascend",
+    },
+    {
+      title: "Gender",
+      dataIndex: "gender",
+      key: "gender",
+      filters: [
+        { text: "Male", value: "Male" },
+        { text: "Female", value: "Female" },
+      ],
+      onFilter: (value, record) => record.gender === value,
+    },
+    {
+      title: "Department",
+      dataIndex: "department",
+      key: "department",
+      sorter: (a, b) => a.department.localeCompare(b.department),
+      sortDirections: ["descend", "ascend"],
+      defaultSortOrder: "ascend",
+    },
+    {
+      title: "Job Title",
+      dataIndex: "job",
+      key: "job",
+      sorter: (a, b) => a.department.localeCompare(b.department),
+      sortDirections: ["descend", "ascend"],
+      defaultSortOrder: "ascend",
+    },
+    {
+      title: "Country",
+      dataIndex: "country",
+      key: "country",
+    },
+    {
+      title: "City",
+      dataIndex: "email",
+      key: "email",
+    },
+  ];
 
+  return (
+    <div className="">
+      <Table dataSource={usersData} columns={columns} />
+    </div>
+  );
+};
 
-
-
-const TableData = (pagination, filters, sorter, extra) => {
-
-    // const tableData = usersData
-
-    const usersData = [
-        {
-            key: '1',
-            first_name: "Marigold",
-            last_name: "Sealey",
-            email: "msealey0@techcrunch.com",
-            gender : "Female",
-            department: "Marketing",
-            job_title: "Analog Circuit Design manager",
-            country: "China",
-            city: "Damaying"
-        },
-        {
-            key: '2',
-            first_name: "Lanita",
-            last_name: "Yves",
-            email: "lyves1@hugedomains.com",
-            gender : "Female",
-            department: "Support",
-            job_title: "Web Designer II",
-            country: "Japan",
-            city: "Hirakata"
-        },
-        {
-            key: '3',
-            first_name: "Donny",
-            last_name: "Mannakee",
-            email: "dmannakee2@psu.edu",
-            gender : "Female",
-            department: "Human Resources",
-            job_title: "Health Coach II",
-            country: "Armenia",
-            city: "Sevan"
-        },
-        {
-            key: '4',
-            first_name: "Dodi",
-            last_name: "Flecknell",
-            email: "dflecknell3@vkontakte.ru",
-            gender : "Female",
-            department: "Product Management",
-            job_title: "Senior Editor",
-            country: "Norway",
-            city: "Drammen"
-        },
-        {
-            key: '5',
-            first_name: "Marci",
-            last_name: "Clink",
-            email: "mclink4@netscape.com",
-            gender : "Female",
-            department: "Human Resources",
-            job_title: "Nuclear Power Engineer",
-            country: "Russia",
-            city: "Nytva"
-        },
-        {
-            key: '6',
-            first_name: "Harv",
-            last_name: "Cowitz",
-            email: "hcowitz5@mozilla.org",
-            gender : "Male",
-            department: "Services",
-            job_title: "Account Coordinator",
-            country: "Uganda",
-            city: "Entebbe"
-        },
-        {
-            key: '7',
-            first_name: "Fonz",
-            last_name: "Timmermann",
-            email: "ftimmermann6@nba.com",
-            gender : "Male",
-            department: "Legal",
-            job_title: "Geological Engineer",
-            country: "Russia",
-            city: "Cherkasskoye"
-        },
-        {
-            key: '8',
-            first_name: "Hastie",
-            last_name: "Loughton",
-            email: "hloughton7@drupal.org",
-            gender : "Male",
-            department: "Product Management",
-            job_title: "Recruiting Manager",
-            country: "China",
-            city: "Jinzhuang"
-        },
-        {
-            key: '9',
-            first_name: "Deck",
-            last_name: "Gooday",
-            email: "dgooday8@xing.com",
-            gender : "Male",
-            department: "Legal",
-            job_title: "Speech Pathologist",
-            country: "Egypt",
-            city: "Isnā"
-        },
-        {
-            key: '10',
-            first_name: "Venita",
-            last_name: "Kissock",
-            email: "vkissock9@discovery.com",
-            gender : "Female",
-            department: "Services",
-            job_title: "Account Representative IV",
-            country: "Portugal",
-            city: "Foros de Salvaterra"
-        },
-        {
-            key: '11',
-            first_name: "Leonid",
-            last_name: "Farryan",
-            email: "lfarryana@meetup.com",
-            gender : "Male",
-            department: "Accounting",
-            job_title: "Research Nurse",
-            country: "Russia",
-            city: "Lyalichi"
-        },
-        {
-            key: '12',
-            first_name: "Mirabella",
-            last_name: "Lambart",
-            email: "mlambartb@artisteer.com",
-            gender : "Female",
-            department: "Support",
-            job_title: "Systems Administrator III",
-            country: "Honduras",
-            city: "Marale"
-        },
-        {
-            key: '13',
-            first_name: "Farlee",
-            last_name: "Oldknowe",
-            email: "foldknowec@imageshack.us",
-            gender : "Male",
-            department: "Sales",
-            job_title: "Help Desk Technician",
-            country: "Egypt",
-            city: "Dishnā"
-        },
-        {
-            key: '14',
-            first_name: "Blayne",
-            last_name: "Browse",
-            email: "bbrowsed@infoseek.co.jp",
-            gender : "Male",
-            department: "Legal",
-            job_title: "Senior Developer",
-            country: "Nigeria",
-            city: "Gusau"
-        },
-        {
-            key: '15',
-            first_name: "Jaymee",
-            last_name: "Dimblebee",
-            email: "jdimblebeee@arstechnica.com",
-            gender : "Female",
-            department: "Legal",
-            job_title: "Engineer IV",
-            country: "Portugal",
-            city: "Ortiga"
-        },
-        {
-            key: '16',
-            first_name: "Greta",
-            last_name: "Plackstone",
-            email: "gplackstonef@economist.com",
-            gender : "Female",
-            department: "Accounting",
-            job_title: "Computer Systems Analyst IV",
-            country: "China",
-            city: "Kanshi"
-        },
-        {
-            key: '17',
-            first_name: "Thomasin",
-            last_name: "de Banke",
-            email: "tdebankeg@engadget.com",
-            gender : "Female",
-            department: "Product Management",
-            job_title: "Safety Technician I",
-            country: "Finland",
-            city: "Varkaus"
-        },
-        {
-            key: '18',
-            first_name: "Varkaus",
-            last_name: "Jertz",
-            email: "jjertzh@google.it",
-            gender : "Male",
-            department: "Support",
-            job_title: "Design Engineer",
-            country: "Indonesia",
-            city: "Nobo"
-        },
-        {
-            key: '19',
-            first_name: "Donelle",
-            last_name: "Gregol",
-            email: "dgregoli@barnesandnoble.com",
-            gender : "Female",
-            department: "Human Resources",
-            job_title: "Programmer I",
-            country: "Portugal",
-            city: "Pedrogão"
-        },
-        {
-            key: '20',
-            first_name: "Elie",
-            last_name: "Farish",
-            email: "efarishj@chron.com",
-            gender : "Female",
-            department: "Human Resources",
-            job_title: "Compensation Analyst",
-            country: "China",
-            city: "Changfeng"
-        }
-    ]
-
-    const columns = [
-        {
-          title: 'first_name',
-          dataIndex: 'name',
-          key: 'name',
-        },
-        {
-          title: 'last_name',
-          dataIndex: 'last_name',
-          key: 'last_name',
-        },
-        {
-          title: 'Email',
-          dataIndex: 'email',
-          key: 'email',
-        },
-        {
-            title: 'Gender',
-            dataIndex: 'gender',
-            key: 'gender',
-        },
-        {
-            title: 'Department',
-            dataIndex: 'department',
-            key: 'department',
-        },
-        {
-            title: 'Job Title',
-            dataIndex: 'job',
-            key: 'job',
-        },
-        {
-            title: 'Country',
-            dataIndex: 'country',
-            key: 'country',
-        },
-        {
-            title: 'City',
-            dataIndex: 'email',
-            key: 'email',
-        },  
-      ];
-
-    
-    return (
-        <div className="">
-            <Table  dataSource={usersData} columns={columns} />
-        </div>
-    )
-}
-
-export default TableData
+export default TableData;

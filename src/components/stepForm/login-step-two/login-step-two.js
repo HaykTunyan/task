@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { registerFormTwo } from "../../../redux/global.slice";
 import { Card, Form, Input, Button, Row, Col } from "antd";
@@ -17,11 +17,11 @@ const LoginStepTwo = ({ navigation }) => {
   const dispatch = useDispatch();
 
   const loginInput = useSelector((state) => state.global.formTwo);
-  console.log("loginInout", loginInput);
   const nextButton = ({ state }) => {
     dispatch(registerFormTwo({ state }));
     if (loginInput) {
       navigation.next();
+      localStorage.setItem("Step Two Info", JSON.stringify(loginInput)  );
     }
   };
 

@@ -1,13 +1,20 @@
 import React from "react";
 import { useSelector } from "react-redux";
 import { Button, Divider, Row, Col, Card } from "antd";
+import { useHistory } from "react-router-dom";
 
-const TableStepThree = ({ navigation }) => {
+const TableStepThree = ({ navigation, state }) => {
   const stateData = useSelector((state) => state.global.form);
   const stateDataTwo = useSelector((dataTwo) => dataTwo.global.formTwo);
   
-  // localStorage.setItem( stateData );
-  // localStorage.setItem( stateDataTwo ); 
+  localStorage.setItem('document',JSON.stringify(stateData));
+
+  let history = useHistory();
+
+  function usersClick() {
+    history.push("/table");
+  }
+
 
   return (
     <Row>
@@ -55,7 +62,7 @@ const TableStepThree = ({ navigation }) => {
         </div>
         <Divider></Divider>
           <div className="flex-around">
-            <Button type="default" onClick={() => navigation.next()}>
+            <Button type="default" onClick={usersClick}>
               Next
             </Button>
           </div>

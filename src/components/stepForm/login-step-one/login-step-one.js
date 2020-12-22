@@ -24,12 +24,13 @@ const LoginStepOne = ({ navigation }) => {
   const dispatch = useDispatch();
 
   const loginInput = useSelector((state) => state.global.form);
-  console.log("logggggg", loginInput);
 
   const nextButton = ({ state }) => {
     dispatch(registerForm({ state }));
     if (loginInput) {
       navigation.next();
+      localStorage.setItem(loginInput.access_token )
+      localStorage.setItem('Login User Input',JSON.stringify(loginInput));
     }
   };
 
